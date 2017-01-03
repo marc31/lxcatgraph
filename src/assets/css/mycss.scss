@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+$blanc:#fff;
+$back:#fff;
+$noir: #000;
+$close: '../images/close.svg';
+
+////// Notre normalization /////////
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ol, ul{
+  list-style: none;
+}
+a:hover, a:visited, a:link, a:active{
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  vertical-align: middle;
+}
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  line-height: 1; }
+[data-whatinput='mouse'] button {
+  outline: 0; }
+textarea {
+  height: auto;
+  min-height: 50px;
+  border-radius: 0; }
+select {
+  width: 100%;
+  border-radius: 0; }
+.is-visible {
+  display: block !important; }
+.is-hidden {
+  display: none !important; }
+.is-rev{
+ unicode-bidi:bidi-override;
+ direction: rtl;
+}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
+  margin: 0;
+  padding: 0; }
+p {
+  font-size: inherit;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-rendering: optimizeLegibility; }
+em,i {
+  font-style: italic;
+  line-height: inherit; }
+strong,b {
+  font-weight: bold;
+  line-height: inherit; }
+small {
+  font-size: 80%;
+  line-height: inherit; }
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Noto Sans";
+  font-weight: 700;
+  font-style: normal;
+  color: inherit;
+  text-rendering: optimizeLegibility;
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1; }
+h1 small,h2 small,h3 small,h4 small,h5 small,h6 small {
+  line-height: 0;
+}
+a {
+  line-height: inherit;
+  cursor: pointer;
+
+}
+a:hover, a:focus {
+
+}
+a img {
+  border: 0;
+}
+[type='text'],[type='password'],[type='date'], [type='datetime'], [type='datetime-local'], [type='month'],
+[type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'],
+[type='color'], textarea {
+  //display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0 0 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #0a0a0a;
+  background-color: #fefefe;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  border-radius: 0;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+ }
+[type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus,
+[type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus,
+[type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus,
+[type='url']:focus, [type='color']:focus,
+textarea:focus {
+  border: 1px solid #8a8a8a;
+  background-color: #fefefe;
+  outline: none;
+  box-shadow: 0 0 5px #cacaca;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
+/////////////
+
+@font-face {
+  font-family: "Dosis-Bold";
+  src: url("../font/Dosis-Bold.eot");
+  src: url("../font/Dosis-Bold.eot?#iefix") format("embedded-opentype"),
+  url("../font/Dosis-Bold.woff2") format("woff2"),
+  url("../font/Dosis-Bold.woff") format("woff"),
+  url("../font/Dosis-Bold.ttf") format("truetype"),
+  url("../font/Dosis-Bold.svg#Dosis") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}

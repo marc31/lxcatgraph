@@ -1,0 +1,232 @@
+allow from all
+
+# Set the default handler.
+DirectoryIndex index.php
+
+# Désactiver l'affichage du contenu des répertoires
+Options All -Indexes
+IndexIgnore *
+
+# Masquer les informations du serveur
+ServerSignature Off
+#ServerTokens Prod a mettre dans le httpd.conf
+
+# Activation du suivi des liens symboliques
+#Options +FollowSymLinks
+
+# Choix du fuseau horaire
+SetEnv TZ Europe/Paris
+
+# Encodage par défaut des fichiers textes et HTML
+AddDefaultCharset UTF-8
+
+# Make sure MultiViews is disabled if available. en fait le serveur choisie automatiquement html puis php puis ...
+<IfModule mod_negotiation.c>
+  Options -MultiViews
+</IfModule>
+
+#Protéger les fichiers .htaccess et .htpasswds
+<Files ~ "^.*\.([Hh][Tt][AaPp])">
+  deny from all
+  satisfy all
+</Files>
+
+
+ErrorDocument 404 /404.html
+
+
+# Désactiver le hotlinking de vos images.
+# Ceci empeche que qq fasse un lien directement vers vos image sur son site
+# Ce qui prends de la bande passante a votre place.
+#<IfModule mod_rewrite.c>
+#  RewriteEngine On
+#  RewriteCond %{HTTP_REFERER} !^$
+#  RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?ginkgo-web.fr [NC]
+#  RewriteRule \.(jpg|jpeg|png|gif|svg)$ http://fakeimg.pl/400x200/?text=Pas_touche_aux_images [NC,R,L]
+#</IfModule>
+
+# Redirection du site sans www vers www
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^ginkgo-web.fr [NC]
+  RewriteRule ^(.*)$ http://www.ginkgo-web.fr/$1 [R=301]
+</IfModule>
+
+# Redirection vers HTTPS
+#<IfModule mod_rewrite.c>
+#RewriteEngine on
+#RewriteCond     %{SERVER_PORT} ^80$
+#RewriteRule     ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R]
+#</IfModule>
+
+# Protection contre les injections de fichiers
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteCond %{REQUEST_METHOD} GET
+  RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+  RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+  RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
+  RewriteRule .* - [F]
+</IfModule>
+
+# Protections diverses (XSS, clickjacking et MIME-Type sniffing)
+<ifModule mod_headers.c>
+  Header set X-XSS-Protection "1; mode=block"
+  Header always append X-Frame-Options SAMEORIGIN
+  Header set X-Content-Type-Options: "nosniff"
+</ifModule>
+
+
+#rediriger index.html , index.php.... vers racine de site ( aussi pour éviter le duplicate contenu )
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{THE_REQUEST} ^(GET|POST|HEAD)\ (/.*)?/index.(htm|html|php|asp|shtml)
+  RewriteRule ^(.*)index.(htm|html|php|asp|shtml)$ /$1 [R=301]
+</IfModule>
+
+#Rajoute un slash a la fin de l'url
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} /+[^\.]+$
+  RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+</IfModule>
+
+
+# set the correct mime type for woff2 font type
+<IfModule mod_mime.c>
+  AddType application/font-woff2    woff2
+</IfModule>
+
+# ATTENTION DEV MODE =>  Mise en cache des fichiers dans le navigateur
+#<IfModule mod_expires.c>
+#  ExpiresActive On
+#  ExpiresDefault "access plus 1 seconds"
+#
+#  ExpiresByType text/html "access plus 1 seconds"
+#  ExpiresByType text/xml "access plus 1 seconds"
+#  ExpiresByType application/xml "access plus 1 seconds"
+#  ExpiresByType application/json "access plus 1 seconds"
+#  ExpiresByType application/pdf "access plus 1 seconds"
+#
+#  ExpiresByType application/rss+xml "access plus 1 seconds"
+#  ExpiresByType application/atom+xml "access plus 1 seconds"
+#
+#  ExpiresByType application/x-font-ttf "access plus 1 seconds"
+#  ExpiresByType font/opentype "access plus 1 seconds"
+#  ExpiresByType application/x-font-woff "access plus 1 seconds"
+#  ExpiresByType application/x-font-woff2 "access plus 1 seconds"
+#  ExpiresByType image/svg+xml "access plus 1 seconds"
+#  ExpiresByType application/vnd.ms-fontobject "access plus 1 seconds"
+#  ExpiresByType application/font-ttf "access plus 1 seconds"
+#  ExpiresByType application/font-woff "access plus 1 seconds"
+#  ExpiresByType application/font-woff2 "access plus 1 seconds"
+#
+#  ExpiresByType image/jpg "access plus 1 seconds"
+#  ExpiresByType image/jpeg "access plus 1 seconds"
+#  ExpiresByType image/gif "access plus 1 seconds"
+#  ExpiresByType image/png "access plus 1 seconds"
+#  ExpiresByType image/svg+xml "access plus 1 seconds"
+#  ExpiresByType image/svg "access plus 1 seconds"
+#
+#  ExpiresByType video/ogg "access plus 1 seconds"
+#  ExpiresByType audio/ogg "access plus 1 seconds"
+#  ExpiresByType video/mp4 "access plus 1 seconds"
+#  ExpiresByType video/webm "access plus 1 seconds"
+#
+#  ExpiresByType text/css "access plus 1 seconds"
+#  ExpiresByType text/javascript "access plus 1 seconds"
+#  ExpiresByType application/x-javascript "access plus 1 seconds"
+#  ExpiresByType application/javascript "access plus 1 seconds"
+#
+#  ExpiresByType application/x-shockwave-flash "access plus 1 seconds"
+#  ExpiresByType image/x-icon "access plus 1 seconds"
+#
+#</IfModule>
+
+# Mise en cache des fichiers dans le navigateur
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/xml "access plus 1 hour"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/pdf "access plus 0 seconds"
+
+  ExpiresByType application/rss+xml "access plus 1 hour"
+  ExpiresByType application/atom+xml "access plus 1 hour"
+
+  ExpiresByType application/x-font-ttf "access plus 5 month"
+  ExpiresByType font/opentype "access plus 5 month"
+  ExpiresByType application/x-font-woff "access plus 5 month"
+  ExpiresByType application/x-font-woff2 "access plus 5 month"
+  ExpiresByType application/vnd.ms-fontobject "access plus 5 month"
+  ExpiresByType application/font-ttf "access plus 5 month"
+  ExpiresByType application/font-woff "access plus 5 month"
+  ExpiresByType application/font-woff2 "access plus 5 month"
+
+  ExpiresByType image/jpg "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/svg "access plus 1 month"
+
+  ExpiresByType video/ogg "access plus 1 month"
+  ExpiresByType audio/ogg "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType video/webm "access plus 1 month"
+
+  ExpiresByType text/css "access plus 1 hour"
+  ExpiresByType text/javascript "access plus 1 hour"
+  ExpiresByType application/x-javascript "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 week"
+
+</IfModule>
+
+# En-têtes
+Header unset ETag
+FileETag None
+<ifModule mod_headers.c>
+  <filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+      Header set Cache-Control "public"
+  </filesMatch>
+  <filesMatch "\.(css)$">
+      Header set Cache-Control "public"
+  </filesMatch>
+  <filesMatch "\.(js)$">
+      Header set Cache-Control "private"
+  </filesMatch>
+  <filesMatch "\.(x?html?|php)$">
+      Header set Cache-Control "private, must-revalidate"
+  </filesMatch>
+</ifModule>
+
+# Compressions des fichiers statiques
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/xhtml text/html text/plain text/xml text/javascript application/x-javascript application/javascript text/css font/opentype application/json application/rss+xml
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+    Header append Vary User-Agent env=!dont-vary
+    Header append Vary: Accept-Encoding
+</IfModule>
+
+# Compressions des fichiers statiques
+<IfModule mod_gzip.c>
+  mod_gzip_on       Yes
+  mod_gzip_dechunk  Yes
+  mod_gzip_item_include file      .(html?|txt|css|js|php|pl)$
+  mod_gzip_item_include handler   ^cgi-script$
+  mod_gzip_item_include mime      ^text/.*
+  mod_gzip_item_include mime      ^application/x-javascript.*
+  mod_gzip_item_include mime      ^application/javascript.*
+  mod_gzip_item_exclude mime      ^image/.*
+  mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+  Header append Vary: Accept-Encoding
+</IfModule>

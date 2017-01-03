@@ -1,0 +1,40 @@
+dist/*
+
+
+# NPM, Gulp and Grunt stuff
+node_modules
+bower_components
+npm-debug.log
+.sass-cache
+app/src/tmp/
+app/src/docs/
+app/src/grunt-local/*.js
+
+travail/marc
+
+# Sourcemaps
+*.map
+
+# File-system cruft and temporary files
+scrutinizer.phar
+php-cs-fixer.phar
+.DS_Store
+.idea
+__*
+._*
+web
+Vagrantfile
+.vagrant*
+*.sublime-*
+/tags
+.*.swp
+.swp
+*.lock
+.buildpath
+.project
+/bolt.log
+coverage.xml
+pimple.json
+dump.php
+/travail/marc/code/lib/
+/nbproject/private/
