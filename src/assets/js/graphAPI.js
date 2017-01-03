@@ -26,7 +26,9 @@ var graphAPI = (function(){
     autosize: true, //?
     width: 1000,
     height: 800,
+    showgrid: false,
     xaxis: {
+      title:"",
       range: [],
       type: 'log',
       dtick: "D1", // En mode log, affiche les 10+ small digits.
@@ -40,6 +42,7 @@ var graphAPI = (function(){
       // autorange: true,
     },
     yaxis: {
+      title:"",
       range: [],
       type: 'log',
       dtick: "D1",
