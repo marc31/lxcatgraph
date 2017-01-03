@@ -92,7 +92,7 @@ var graphAPI = (function(){
 
     addTraces: function( input ){
       var value;
-      if ( typeof input === "Array" ) {
+      if ( Array.isArray( input ) ) {
         var i, l = input.length, value = [], v;
         for ( i = 0; i < l; i++ ) {
           v = Object.assign( {}, tracePattern, input[i] );

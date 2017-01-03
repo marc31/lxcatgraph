@@ -1,4 +1,4 @@
-(function(){
+var readData = (function(){
 
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
@@ -53,9 +53,12 @@
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 
-  function readBolsigFile(file2){
+  function readBolsigFile(file, callback){
 
-    var file = file2 || 'assets/data/cross_section2.txt';
+    if (!file) {
+      console.log('Must specified file');
+      return false;
+    }
 
     var datas = [];
 
@@ -189,6 +192,9 @@
             else if (lines[line].substring(0, 15) === 'xxxxxxxxxxxxxxx') {
               if (line + 1 >= linesLength){
                 console.log('End of file');
+                if (typeof callback === 'function'){
+                  callback(datas);
+                }
                 return datas;
               } else {
                 console.log('xxxxxxxxxxxxxxxxxxx');
@@ -206,11 +212,11 @@
         }
       }
     };
-
-
   }
 
-  readBolsigFile();
+  return {
+    readBolsigFile: readBolsigFile
+  };
 
 
 })();
