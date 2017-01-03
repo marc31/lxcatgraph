@@ -32,6 +32,7 @@ var PATHS = {
     'assets/css/mycss.scss'
   ],
   myjs: [
+    'assets/js/utilityFunctions.js',
     'assets/js/readData.js',
     'assets/js/graphAPI.js',
     'assets/js/my.js'

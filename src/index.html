@@ -13,6 +13,25 @@
 
   <div id="graph"><!-- Plotly chart will be drawn inside this DIV --></div>
 
+  <div id="form-wrapper">
+    <!--Input for grid-->
+    <label for="inp-grid">Afficher la grille</label>
+    <input type="checkbox" id="inp-grid" value="checkbox1" checked="true"><br>
+    <!--Input for display point mode-->
+    <div id="display-point">
+    <label>Chart's mode</label><br>
+      <input type="radio" name="displayPointRadio" value="lines" checked="true"> Ligne<br>
+      <input type="radio" name="displayPointRadio" value="markers"> Point<br>
+      <input type="radio" name="displayPointRadio" value="lines+markers"> Les deux<br>
+    </div>
+    <!--Input for display mode linear or logarithmic-->
+    <div id="display-linear">
+    <label>Display's mode</label><br>
+      <input type="radio" name="displayLinearRadio" value="log" checked="true"> Logarithmic<br>
+      <input type="radio" name="displayLinearRadio" value="linear"> Linear<br>
+    </div>
+  </div>
+
   <div id="add-file">
     <input type="file" id="files" name="files[]" multiple />
     <output id="list"></output>
@@ -21,6 +40,7 @@
   <!-- Script -->
   <!-- inject:js -->
   <script src="assets/js/plotly.js"></script>
+  <script src="assets/js/utilityFunctions.js"></script>
   <script src="assets/js/readData.js"></script>
   <script src="assets/js/graphAPI.js"></script>
   <script src="assets/js/my.js"></script>
