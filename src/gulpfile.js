@@ -33,6 +33,7 @@ var PATHS = {
   ],
   myjs: [
     'assets/js/readData.js',
+    'assets/js/graphAPI.js',
     'assets/js/my.js'
   ],
   libjs: [
