@@ -32,6 +32,7 @@ var PATHS = {
     'assets/css/mycss.scss'
   ],
   myjs: [
+    'assets/js/readData.js',
     'assets/js/my.js'
   ],
   libjs: [

@@ -11,11 +11,17 @@
 </head>
 <body>
 
-  <div id="graph" style="width: 480px; height: 400px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="graph"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+  <div id="add-file">
+    <input type="file" id="files" name="files[]" multiple />
+    <output id="list"></output>
+  </div>
 
   <!-- Script -->
   <!-- inject:js -->
   <script src="assets/js/plotly.js"></script>
+  <script src="assets/js/readData.js"></script>
   <script src="assets/js/my.js"></script>
   <!-- endinject -->
 </body>
