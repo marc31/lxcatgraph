@@ -104,7 +104,8 @@ var graphAPI = (function(){
     addTraces: function( input ){
       var value;
       // If input is array, must be multiple traces to add.
-      if ( typeof input === "Array" ) {
+      if ( Array.isArray( input ) ) {
+
         var i, l = input.length, value = [], v;
         for ( i = 0; i < l; i++ ) {
           v = Object.assign( {}, tracePattern, input[i] );

@@ -2,6 +2,15 @@
 
   'use strict';
 
+  //// TEST PARSEUR
+  var filePath = 'assets/data/cross_section2.txt';
+  (function(){
+    readData.readBolsigFile( filePath, function( a ){
+      graphAPI.addTraces( a );
+    });
+
+  })();
+
   ///// Input buttons.
   var inpGrid = document.getElementById('inp-grid');
   var inpDisplayPoint = document.getElementById('display-point');
