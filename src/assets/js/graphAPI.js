@@ -51,9 +51,17 @@ var graphAPI = (function(){
   var data = [trace1, trace2];
 
   var layout = {
-    autosize: true, //?
+    title: "Une super courbe",
+    autosize: false,
     width: 1000,
     height: 800,
+    // margin: {
+    //   l: 50,
+    //   r: 50,
+    //   b: 50,
+    //   t: 50,
+    //   pad: 4
+    // },
     xaxis: {
       title:"Energy (eV)",
       type: 'log',
@@ -62,12 +70,16 @@ var graphAPI = (function(){
       exponentformat: 'e',
       showexponent: 'All',
       tickcolor: "#333",
-      // gridcolor: "#999",
+      gridcolor: "#ddd",
       // showgrid: false,
       // showticklabels: false
-      // autorange: true,
+      autorange: true,
+      linecolor: '#333',
+      linewidth: 1,
+      mirror: true
     },
     yaxis: {
+      autosize: false,
       title:"Cross section (m²)",
       type: 'log',
       ticks: "inside",
@@ -76,22 +88,22 @@ var graphAPI = (function(){
       exponentformat: 'e',
       showexponent: 'All',
       tickcolor: "#333",
-      // gridcolor: "#999",
+      gridcolor: "#ddd",
       // showgrid: false,
-      // autorange: true,
+      autorange: true,
+      linecolor: '#333',
+      linewidth: 1,
+      mirror: true
     }
   };
 
-  Plotly.newPlot( graph, data, layout );
+  Plotly.newPlot( graph, data, layout, {displaylogo: false, modeBarButtonsToRemove: ['sendDataToCloud', 'zoomIn2d', 'zoomOut2d']} );
 
   return {
 
-    addData: function( traces ){
-      Plotly.addTraces( graph, traces );
-    },
-
     addTraces: function( input ){
       var value;
+      // If input is array, must be multiple traces to add.
       if ( typeof input === "Array" ) {
         var i, l = input.length, value = [], v;
         for ( i = 0; i < l; i++ ) {
@@ -110,6 +122,13 @@ var graphAPI = (function(){
     },
 
     updateLayout: function( update ){
+      // Apply changes.
+      Plotly.relayout( graph, update );
+    },
+
+    redrawGraph: function( update ){
+      // Merge with new values.
+      uf.simpleExtend( graph, update );
       // Apply changes.
       Plotly.relayout( graph, update );
     },

@@ -5,7 +5,8 @@
   ///// Input buttons.
   var inpGrid = document.getElementById('inp-grid');
   var inpDisplayPoint = document.getElementById('display-point');
-  var inpDisplayLinear = document.getElementById('display-linear');
+  var inpDisplayLinearX = document.getElementById('display-linear-xaxis');
+  var inpDisplayLinearY = document.getElementById('display-linear-yaxis');
 
   ///// Apply Events.
   inpGrid.onchange = function( e ){
@@ -19,42 +20,20 @@
     });
   };
 
- inpDisplayLinear.onchange = function( e ){
+ inpDisplayLinearX.onchange = function( e ){
     // Get linear radio value.
-    var value, state = this.querySelector('input[name="displayLinearRadio"]:checked').value;
+    var state = this.querySelector('input[name="displayLinearRadioX"]:checked').value;
+    // Get new layout value.
+    var value = getAxisValue ( 'xaxis', state );
+    // Call graphAPI method to set changes.
+    graphAPI.updateLayout( value );
+  };
 
-    switch ( state ) {
-      case 'log':
-        value = {
-          'xaxis.type': 'log',
-          'xaxis.dtick': "D1",
-          'yaxis.type': 'log',
-          'yaxis.dtick': "D1"
-        };
-        break;
-      case 'linear':
-        value = {
-          'xaxis.type': 'auto',
-          'yaxis.type': 'auto',
-          'xaxis.dtick': 0,
-          'yaxis.dtick': 0,
-          'xaxis.ntick': 10,
-          'yaxis.ntick': 10,
-          'xaxis.tick0': 0,
-          'yaxis.tick0': 0,
-          // dtick: 100,
-          // tick0: 0
-        };
-        break;
-      default:
-        value = {
-          'xaxis.type': 'log',
-          'xaxis.dtick': "D1",
-          'yaxis.type': 'log',
-          'yaxis.dtick': "D1"
-        };
-        break;
-    }
+   inpDisplayLinearY.onchange = function( e ){
+    // Get linear radio value.
+    var state = this.querySelector('input[name="displayLinearRadioY"]:checked').value;
+    // Get new layout value.
+    var value = getAxisValue ( 'yaxis', state );
     // Call graphAPI method to set changes.
     graphAPI.updateLayout( value );
   };
@@ -69,6 +48,39 @@
         mode: state,
     });
   };
+
+  // Axis event handler.
+  function getAxisValue ( ax, state ) {
+    var result = {};
+    switch ( state ) {
+      case 'log':
+        var a = ax + '.type', 
+            b = ax + '.dtick';
+        result[a] = 'log';
+        result[b] = 'D1';
+        break;
+
+      case 'linear':
+      var a = ax + '.type', 
+          b = ax + '.dtick',
+          c = ax + '.tickmode',
+          d = ax + '.autorange';
+
+          result[a] = 'auto';
+          result[b] = null;
+          result[c] = 'auto';
+          result[d] = true;
+          break;
+
+      default:
+        var a = ax + '.type', 
+            b = ax + '.dtick';
+        result[a] = 'log';
+        result[b] = 'D1';
+        break;
+    }
+    return result;
+  }
   
 
 })();
