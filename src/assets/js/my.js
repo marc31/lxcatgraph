@@ -21,13 +21,42 @@
 
  inpDisplayLinear.onchange = function( e ){
     // Get linear radio value.
-    var state = this.querySelector('input[name="displayLinearRadio"]:checked').value;
+    var value, state = this.querySelector('input[name="displayLinearRadio"]:checked').value;
 
+    switch ( state ) {
+      case 'log':
+        value = {
+          'xaxis.type': 'log',
+          'xaxis.dtick': "D1",
+          'yaxis.type': 'log',
+          'yaxis.dtick': "D1"
+        };
+        break;
+      case 'linear':
+        value = {
+          'xaxis.type': 'auto',
+          'yaxis.type': 'auto',
+          'xaxis.dtick': 0,
+          'yaxis.dtick': 0,
+          'xaxis.ntick': 10,
+          'yaxis.ntick': 10,
+          'xaxis.tick0': 0,
+          'yaxis.tick0': 0,
+          // dtick: 100,
+          // tick0: 0
+        };
+        break;
+      default:
+        value = {
+          'xaxis.type': 'log',
+          'xaxis.dtick': "D1",
+          'yaxis.type': 'log',
+          'yaxis.dtick': "D1"
+        };
+        break;
+    }
     // Call graphAPI method to set changes.
-    graphAPI.updateLayout({
-      'xaxis.type': state,
-      'yaxis.type': state
-    });
+    graphAPI.updateLayout( value );
   };
 
 

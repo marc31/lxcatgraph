@@ -4,6 +4,16 @@ var graphAPI = (function(){
 
   var graph = document.getElementById('graph');
 
+  var tracePattern = {
+    type: 'scatter',
+    line: {
+      width: 1
+    },
+    marker: {
+      size: 5
+    }
+  };
+
   var trace1 = {
     x: [0.000000e+0,1.000000e-4,3.514000e-2,7.152000e-2,1.091700e-1,1.371370e+0,5.918310e+0,8.440610e+0,1.102264e+1,1.379108e+1,1.657924e+1,1.918366e+1,2.217395e+1,2.560725e+1,2.954921e+1,3.407519e+1,3.790451e+1,4.215191e+1,4.686301e+1,
         5.588529e+1,6.660830e+1,7.935261e+1,9.449926e+1,1.125011e+2,1.338963e+2,1.593245e+2,1.895461e+2,2.254644e+2,3.188895e+2,3.791894e+2,4.508559e+2,5.360318e+2,6.372635e+2,7.575776e+2,9.005711e+2],
@@ -47,13 +57,12 @@ var graphAPI = (function(){
     xaxis: {
       title:"Energy (eV)",
       type: 'log',
-      //ticks: "inside",
+      ticks: "inside",
       dtick: "D1", // En mode log, affiche les 10+ small digits.
       exponentformat: 'e',
       showexponent: 'All',
       tickcolor: "#333",
       // gridcolor: "#999",
-      mirror: "ticks",
       // showgrid: false,
       // showticklabels: false
       // autorange: true,
@@ -61,14 +70,13 @@ var graphAPI = (function(){
     yaxis: {
       title:"Cross section (m²)",
       type: 'log',
-      //ticks: "inside",
+      ticks: "inside",
       showtickprefix: "first",
       dtick: "D1",
       exponentformat: 'e',
       showexponent: 'All',
       tickcolor: "#333",
       // gridcolor: "#999",
-      mirror: "ticks",
       // showgrid: false,
       // autorange: true,
     }
@@ -82,8 +90,18 @@ var graphAPI = (function(){
       Plotly.addTraces( graph, traces );
     },
 
-    refresh: function(){
-
+    addTraces: function( input ){
+      var value;
+      if ( typeof input === "Array" ) {
+        var i, l = input.length, value = [], v;
+        for ( i = 0; i < l; i++ ) {
+          v = Object.assign( {}, tracePattern, input[i] );
+          value.push( v );
+        }
+      } else {
+        value = Object.assign( {}, tracePattern, input );
+      }
+      Plotly.addTraces(graph, value);
     },
 
     updateDataStyle: function( update ){
