@@ -12,6 +12,7 @@ var graphAPI = (function(){
         2.748810e-22,2.023320e-22,1.477860e-22,1.101690e-22,8.165410e-23,5.983320e-23],
     type: 'scatter',
     name: 'Super courbe de la bdd 1',
+    mode: 'lines+markers',
     line: {
       width: 1
     },
@@ -30,6 +31,7 @@ var graphAPI = (function(){
         7.500000e-21,6.050000e-21,5.200000e-21,4.100000e-21,3.000000e-21,2.350000e-21,1.700000e-21],
     type: 'scatter',
     name: 'Super courbe de la bdd 2',
+    mode: 'lines+markers',
     line: {
       width: 1
     },
@@ -39,6 +41,7 @@ var graphAPI = (function(){
   };
 
   var data = [trace1, trace2];
+  var layout;
 
   /**
    * 
@@ -55,6 +58,7 @@ var graphAPI = (function(){
 
   var tracePattern = {
     type: 'scatter',
+    mode: 'lines+markers',
     line: {
       width: 1
     },
@@ -91,28 +95,28 @@ var graphAPI = (function(){
    * 
    */
 
-  function setLayoutSize( layout ){
+  function setLayoutSize(){
     var s = uf.getViewport();
     layout.width = Math.max( s.w * ( 2/3 ), 500);
     layout.height = Math.max( s.h * ( 4/5 ), 500);
   }
 
-  function getAxis( options ){
+  function constructAxis( options ){
     var result = Object.assign( {}, defaultAxis, options );
     return result;
   }
 
-  function getLayout( layoutname, xaxisname, yaxisname ){
+  function constructLayout( layoutname, xaxisname, yaxisname ){
     var result = Object.assign( {}, defaultLayout );
     result.title = layoutname;
-    result.xaxis = getAxis( {title: xaxisname} );
-    result.yaxis = getAxis( {title: yaxisname} );
+    result.xaxis = constructAxis( {title: xaxisname} );
+    result.yaxis = constructAxis( {title: yaxisname} );
     return result;
   }
 
   function init(){
     // Create the layout.
-    var layout = getLayout( "Une super courbe", "Energy (eV)", "Cross section (m²)" );
+    layout = constructLayout( "Une super courbe", "Energy (eV)", "Cross section (m²)" );
     // Resize layout according device viewport.
     setLayoutSize( layout );
     // Create the Plot instance.
@@ -163,6 +167,10 @@ var graphAPI = (function(){
       // Apply changes.
       Plotly.relayout( graph, update );
     },
+  
+    getLayout: function(){
+      return layout;
+    }
 
   }
 

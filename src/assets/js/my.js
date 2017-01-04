@@ -19,7 +19,21 @@
   var inpDisplayLinearX = document.getElementById('display-linear-xaxis');
   var inpDisplayLinearY = document.getElementById('display-linear-yaxis');
   var inputFile = document.getElementById('inputfile');
+  var inpXstart = document.getElementById('x-start');
+  var inpXend = document.getElementById('x-end');
+  var inpYstart = document.getElementById('y-start');
+  var inpYend = document.getElementById('y-end');
 
+
+  ///// Init Display courbe.
+  (function(){
+    // Set axis range inputs values.
+    var range = graphAPI.getLayoutRange();
+    inpXstart.value = range.xaxis[0];
+    inpXend.value = range.xaxis[1];
+    inpYstart.value = range.yaxis[0];
+    inpYend.value = range.yaxis[1];
+  })();
 
   ///// Apply Events.
   inpGrid.onchange = function( e ){

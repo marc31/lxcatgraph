@@ -19,20 +19,22 @@
     <input type="checkbox" id="inp-grid" value="checkbox1" checked="true"><br>
     <!--Input for display point mode-->
     <div id="display-point">
-    <label>Display : </label><br>
-      <input type="radio" name="displayPointRadio" value="lines" checked="true"> Line
+    <label>Display : </label>
+      <input type="radio" name="displayPointRadio" value="lines"> Line
       <input type="radio" name="displayPointRadio" value="markers"> Points
-      <input type="radio" name="displayPointRadio" value="lines+markers"> Both<br>
+      <input type="radio" name="displayPointRadio" value="lines+markers" checked="true"> Both<br>
     </div>
     <!--Input for X display mode linear or logarithmic-->
     <div id="display-linear-xaxis">
     <label>X axis : </label>
+      <input type="number" id="x-start" name="xstart"> to <input type="number" id="x-end" name="xend">
       <input type="radio" name="displayLinearRadioX" value="log" checked="true"> Log
       <input type="radio" name="displayLinearRadioX" value="linear"> Linear<br>
     </div>
     <!--Input for Y display mode linear or logarithmic-->
     <div id="display-linear-yaxis">
     <label>Y axis : </label>
+      <input type="number" id="y-start" name="ystart"> to <input type="number" id="y-end" name="yend">
       <input type="radio" name="displayLinearRadioY" value="log" checked="true"> Log
       <input type="radio" name="displayLinearRadioY" value="linear"> Linear<br>
     </div>
