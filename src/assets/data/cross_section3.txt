@@ -1,0 +1,205 @@
+LXCat, www.lxcat.net
+Generated on 04 Jan 2017. All rights reserved.
+
+RECOMMENDED REFERENCE FORMAT
+- SIGLO database, www.lxcat.net, retrieved on January 4, 2017.
+
+CROSS SECTION DATA FORMAT
+In downloaded files, each collision process is defined by a block consisting of
+1st line
+Keyword in capitals indicating the type of the collision. Possible collision types are elastic, effective, excitation,
+ionization, or attachment (capital letters required, key words are case sensitive), where "elastic" is used to denote
+the elastic momentum transfer cross section and where "effective" denotes the total momentum transfer cross section (sum
+of elastic momentum transfer and total inelastic cross sections).  The latter is useful for solving the Boltzmann
+equation in the 2-term approximation.
+2nd line
+Name of the target particle species. This name is a character string, freely chosen by the user, e.g. "Ar". Optionally
+for excitation processes, the name of the corresponding excited state can be specified on the same line, separated from
+the first name either by arrow "->" (dash + greater than) or by double-head arrow "<->" (less than + dash +
+greater than), e.g. "Ar -> Ar*" and "Ar <-> Ar*", respectively. In the later case BOLSIG+ will automatically
+define the inverse superelastic process, constructing the superelastic cross-section by detailed balancing, and
+considering the indicated excited state as the target. In this case, the ratio of statistical weights must be input in
+the 3rd line (see below).  Alternatively, superelastic collisions could be defined explicitly as excitation collisions
+with a negative electron energy loss with user input cross sections and species name, "Ar*", for example.
+3rd line
+For elastic and effective collisions, the ratio of the electron mass to the target particle mass. For excitation or
+ionization collisions, the electron energy loss (nominally the threshold energy) in eV. For attachment, the 3rd line is
+missing. In case of an excitation process where an excited state has been indicated on the 2nd line using double-head
+arrow "<->", the 3rd line must specify also ratio of the statistical weights of the final state to the initial state
+as the second parameter in 3rd line this is needed by BOLSIG+ to calculate the de-excitation cross-section.
+from 4th line (optionally)
+User comments and reference information, maximum 100 lines. The only constraint on format is that these comment lines
+must not start with a number.
+Finally
+Table of the cross section as a function of energy. The table starts and ends by a line of dashes "------" (at least 5),
+and has otherwise two numbers per line: the energy in eV and the cross section in m2.
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+DATABASE:         SIGLO database
+PERMLINK:         www.lxcat.net/SIGLO
+DESCRIPTION:      The SIGLO database is the "in-house" data  used by the group GREPHE at LAPLACE in Toulouse. The data
+                  are taken from different sources as indicated for each gas. Please refer to original sources in
+                  publications.  
+                  An early version of this data file, "siglo.sec", was distributed with BOLSIG.  The main changes in the
+                  present version are :
+                  The format has been changed to be compatible with BOLSIG+.
+                  Scale factors have been incorporated in the data and no longer appear explicitly.
+                  We have removed the CF4 cross section data because of their limited precision (probably due to
+                  digitization errors).  For the moment our recommendation is to use the dataset in the Morgan
+                  database.
+                  He : The present data are from the compilation of A.V. Phelps (see reference in the Phelps data
+                  base).
+                  O2 : We recommend using the data in the Phelps database for this species.
+                  H2 : We recommend using the data in the Phelps database for this species.
+                  Cl2 : The present data are an updated compilation (Jan 2012) by J Gregorio and LC Pitchford.    
+                  Cu : Feb 2012. Digitized from Tkachev A N, Fedenev A A and Yakovlenko S I, Laser Phys. vol.17, p. 775
+                  (2007)
+                  Kr :  Nov 2012.  We re-digitized the data from figs. 1 and 5 in H. Date, Y. Sakai and H. Tagashira, J.
+                  Phys. D 22 1478 (1989).  With respect to the previous data from this same reference in the SIGLO
+                  database, there are some changes in the threshold values and in the magnitudes of the inelastic cross
+                  sections.
+CONTACT:          LC Pitchford and JP Boeuf 
+                  pitchford@@laplace.univ-tlse.fr and jpb@@laplace.univ-tlse.fr
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+************************************************************************************************************************
+
+COMMENT: J. Meunier, Ph. Belenguer and J.P. Boeuf, J. Appl. Phys. 78, 731 (1995) , extrapolation of allowed cross sections to 1
+         kV using log(energy)/energy scaling.
+
+********************************************************** Ne **********************************************************
+
+ELASTIC
+Ne
+ 2.715000e-5
+SPECIES: e / Ne
+PROCESS: E + Ne -> E + Ne, Elastic
+PARAM.:  m/M = 0.00002715, complete set
+COMMENT: elastic momentum transfer.
+UPDATED: 2012-04-13 18:40:03
+COLUMNS: Energy (eV) | Cross section (m2)
+-----------------------------
+ 0.000000e+0	1.610000e-21
+ 3.000000e-2	4.690000e-21
+ 5.000000e-2	5.360000e-21
+ 7.000000e-2	6.010000e-21
+ 9.000000e-2	6.690000e-21
+ 1.200000e-1	7.540000e-21
+ 1.500000e-1	8.280000e-21
+ 1.800000e-1	8.930000e-21
+ 2.000000e-1	9.300000e-21
+ 2.500000e-1	1.018000e-20
+ 3.000000e-1	1.091000e-20
+ 4.000000e-1	1.225000e-20
+ 5.000000e-1	1.321000e-20
+ 6.000000e-1	1.402000e-20
+ 7.000000e-1	1.472000e-20
+ 8.000000e-1	1.528000e-20
+ 9.000000e-1	1.580000e-20
+ 1.000000e+0	1.619000e-20
+ 1.200000e+0	1.685000e-20
+ 1.500000e+0	1.753000e-20
+ 1.800000e+0	1.793000e-20
+ 2.000000e+0	1.815000e-20
+ 2.500000e+0	1.860000e-20
+ 3.000000e+0	1.906000e-20
+ 4.000000e+0	1.984000e-20
+ 5.000000e+0	2.070000e-20
+ 6.000000e+0	2.144000e-20
+ 8.000000e+0	2.270000e-20
+ 1.000000e+1	2.420000e-20
+ 1.200000e+1	2.540000e-20
+ 1.500000e+1	2.730000e-20
+ 2.000000e+1	2.930000e-20
+ 2.500000e+1	2.950000e-20
+ 3.000000e+1	2.910000e-20
+ 4.000000e+1	2.740000e-20
+ 5.000000e+1	2.490000e-20
+ 6.000000e+1	2.230000e-20
+ 8.000000e+1	1.800000e-20
+ 1.000000e+2	1.440000e-20
+ 1.200000e+2	1.190000e-20
+ 1.500000e+2	8.780000e-21
+ 2.000000e+2	6.160000e-21
+ 3.000000e+2	3.720000e-21
+ 4.000000e+2	2.590000e-21
+ 5.000000e+2	1.930000e-21
+ 6.000000e+2	1.500000e-21
+ 8.000000e+2	1.010000e-21
+ 1.000000e+3	7.210000e-22
+-----------------------------
+
+EXCITATION
+Ne -> Ne(3P)
+ 2.065000e+1
+SPECIES: e / Ne
+PROCESS: E + Ne -> E + Ne(3P), Excitation
+PARAM.:  E = 20.65 eV, complete set
+COMMENT: excitation (3p).
+UPDATED: 2009-09-09 20:55:16
+COLUMNS: Energy (eV) | Cross section (m2)
+-----------------------------
+ 2.065000e+1	0.000000e+0
+ 2.169000e+1	2.680000e-23
+ 2.325000e+1	4.360000e-23
+ 2.475000e+1	5.300000e-23
+ 2.680000e+1	6.110000e-23
+ 2.885000e+1	6.540000e-23
+ 3.210000e+1	6.800000e-23
+ 3.542000e+1	6.900000e-23
+ 4.121000e+1	6.600000e-23
+ 6.649000e+1	5.000000e-23
+ 7.611000e+1	4.500000e-23
+ 8.970000e+1	3.900000e-23
+ 2.000000e+2	9.200000e-24
+ 5.000000e+2	1.700000e-24
+-----------------------------
+
+IONIZATION
+Ne -> Ne^+
+ 2.156000e+1
+SPECIES: e / Ne
+PROCESS: E + Ne -> E + E + Ne+, Ionization
+PARAM.:  E = 21.56 eV, complete set
+COMMENT: Total ionization, WETZEL (low energy)  amp HEER (higher energy).
+UPDATED: 2011-07-26 13:45:11
+COLUMNS: Energy (eV) | Cross section (m2)
+-----------------------------
+ 2.156000e+1	0.000000e+0
+ 2.200000e+1	9.000000e-23
+ 2.300000e+1	1.900000e-22
+ 2.400000e+1	2.900000e-22
+ 2.500000e+1	3.700000e-22
+ 2.600000e+1	4.800000e-22
+ 2.700000e+1	6.200000e-22
+ 2.800000e+1	7.100000e-22
+ 2.900000e+1	8.100000e-22
+ 3.000000e+1	9.700000e-22
+ 3.100000e+1	1.080000e-21
+ 3.200000e+1	1.210000e-21
+ 3.300000e+1	1.350000e-21
+ 3.400000e+1	1.440000e-21
+ 3.500000e+1	1.510000e-21
+ 3.600000e+1	1.700000e-21
+ 3.700000e+1	1.790000e-21
+ 3.800000e+1	1.890000e-21
+ 3.900000e+1	2.040000e-21
+ 4.000000e+1	2.420000e-21
+ 5.000000e+1	3.590000e-21
+ 6.000000e+1	4.570000e-21
+ 7.000000e+1	5.370000e-21
+ 8.000000e+1	5.930000e-21
+ 9.000000e+1	6.360000e-21
+ 1.000000e+2	6.600000e-21
+ 1.500000e+2	7.140000e-21
+ 2.000000e+2	7.050000e-21
+ 3.000000e+2	6.330000e-21
+ 4.000000e+2	5.600000e-21
+ 5.000000e+2	5.030000e-21
+ 6.000000e+2	4.530000e-21
+ 7.000000e+2	4.130000e-21
+ 8.000000e+2	3.790000e-21
+ 9.000000e+2	3.490000e-21
+ 1.000000e+3	3.250000e-21
+-----------------------------
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

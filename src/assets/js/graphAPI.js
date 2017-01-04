@@ -147,6 +147,16 @@ var graphAPI = (function(){
       Plotly.addTraces(graph, value);
     },
 
+    deleteAllTraces: function(){
+      var delTab = [];
+      for (var i = 0, l = data.length ; i < l ; i++){
+        delTab[i] = i;
+      }
+
+      Plotly.deleteTraces(graph, delTab) ;
+    },
+
+
     updateDataStyle: function( update ){
       // restyle all traces using attribute strings
       Plotly.restyle( graph, update );
