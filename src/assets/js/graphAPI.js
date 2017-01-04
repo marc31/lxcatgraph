@@ -37,7 +37,7 @@ var graphAPI = (function(){
     },
     marker: {
       size: 5
-    }
+    },
   };
 
   var data = [trace1, trace2];
@@ -71,6 +71,7 @@ var graphAPI = (function(){
     autosize: false,
     width: 1000,
     height: 800,
+    hovermode:'closest',
   };
 
   var defaultAxis = {

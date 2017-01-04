@@ -80,8 +80,11 @@
             graphAPI.updateLayout({
               title: '',
               'xaxis.title': a[0].axisName.x,
-              'yaxis.title': a[0].axisName.y
+              'xaxis.autorange': true,
+              'yaxis.title': a[0].axisName.y,
+              'yaxis.autorange': true,
             });
+
           }
         );
       };
