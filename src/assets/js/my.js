@@ -19,6 +19,7 @@
   var inpDisplayLinearX = document.getElementById('display-linear-xaxis');
   var inpDisplayLinearY = document.getElementById('display-linear-yaxis');
   var inputFile = document.getElementById('inputfile');
+  var inputCleanGraph = document.getElementById('clean-graph');
   var inpXstart = document.getElementById('x-start');
   var inpXend = document.getElementById('x-end');
   var inpYstart = document.getElementById('y-start');
@@ -47,6 +48,9 @@
     });
   };
 
+  inputCleanGraph.addEventListener('click', function(evt){
+    graphAPI.deleteAllTraces();
+  },false);
 
   inputFile.addEventListener('change', function(evt){
     var files = evt.target.files; // FileList object
