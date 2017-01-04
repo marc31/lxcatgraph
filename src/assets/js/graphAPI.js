@@ -115,8 +115,9 @@ var graphAPI = (function(){
   }
 
   function init( layoutname, xaxisname, yaxisname ){
+    var l = layoutname || '', x = xaxisname || '', y = yaxisname || '';
     // Create the layout.
-    layout = getLayout( layoutname, xaxisname, yaxisname );
+    layout = constructLayout( l, x, y );
     // Resize layout according device viewport.
     setLayoutSize( layout );
     // Create the Plot instance.

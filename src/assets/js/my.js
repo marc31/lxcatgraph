@@ -18,7 +18,7 @@
   var inpDisplayPoint = document.getElementById('display-point');
   var inpDisplayLinearX = document.getElementById('display-linear-xaxis');
   var inpDisplayLinearY = document.getElementById('display-linear-yaxis');
-  var inputFile = document.getElementById('inputfile');
+  var inputFile = document.getElementById('input-file');
   var inputCleanGraph = document.getElementById('clean-graph');
   var inpXstart = document.getElementById('x-start');
   var inpXend = document.getElementById('x-end');
@@ -29,11 +29,11 @@
   ///// Init Display courbe.
   (function(){
     // Set axis range inputs values.
-    var range = graphAPI.getLayoutRange();
-    inpXstart.value = range.xaxis[0];
-    inpXend.value = range.xaxis[1];
-    inpYstart.value = range.yaxis[0];
-    inpYend.value = range.yaxis[1];
+//    var range = graphAPI.getLayoutRange();
+//     inpXstart.value = range.xaxis[0];
+//     inpXend.value = range.xaxis[1];
+//     inpYstart.value = range.yaxis[0];
+//     inpYend.value = range.yaxis[1];
   })();
 
   ///// Apply Events.
@@ -77,6 +77,11 @@
         readData.readBolsigFileLineByLine(this.result,
           function( a ) {
             graphAPI.addTraces(a);
+            graphAPI.updateLayout({
+              title: '',
+              'xaxis.title': a[0].axisName.x,
+              'yaxis.title': a[0].axisName.y
+            });
           }
         );
       };
