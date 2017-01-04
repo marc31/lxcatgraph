@@ -87,7 +87,7 @@ var readData = (function(){
         }
 
         // Reading Data
-        var data = {x:[],y:[],name:state.process}, num;
+        var data = {x:[],y:[],name:state.process,dbname:state.db}, num;
         do{
           num = lines[line].trim().replace(/\s/g, '*!*!*').split('*!*!*');
           data.x.push(parseFloat(num[0]));
