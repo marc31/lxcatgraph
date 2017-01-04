@@ -2,7 +2,7 @@
 <html lang="fr" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>LXCat Data Visualization</title>
   <!-- Stylesheet -->
   <!-- inject:css -->
   <link rel="stylesheet" href="assets/css/normalize.css">
@@ -10,6 +10,15 @@
   <!-- endinject -->
 </head>
 <body>
+
+  <h1>LXCat Data Visualization</h1>
+
+  <div id="add-file">
+    <label for="input-file">Choose one or more input file downloaded from <a href="http://www.lxcat.net">LXCat</a></label><br />
+    <input type="file" id="input-file" name="files[]" multiple />
+    <output id="list"></output>
+  </div>
+
 
   <div id="graph"><!-- Plotly chart will be drawn inside this DIV --></div>
 
@@ -38,11 +47,6 @@
       <input type="radio" name="displayLinearRadioY" value="log" checked="true"> Log
       <input type="radio" name="displayLinearRadioY" value="linear"> Linear<br>
     </div>
-  </div>
-
-  <div id="add-file">
-    <input type="file" id="input-file" name="files[]" value="Add Sources Files" multiple />
-    <output id="list"></output>
   </div>
 
   <input type="button" id="clean-graph" name="CleanGraph" value="Clean Graph">

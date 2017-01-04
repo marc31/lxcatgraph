@@ -110,9 +110,15 @@ gulp.task('htmlmin', ['inject'], function() {
 
 
 // copy to dist
-gulp.task('copy', function() {
+gulp.task('copy', ['copydata'], function() {
   return gulp.src(['.htaccess','robot.txt'])
     .pipe(gulp.dest('../dist/'));
+});
+
+//copy data
+gulp.task('copydata', function() {
+  return gulp.src(['./assets/data/*'])
+    .pipe(gulp.dest('../dist/assets/data/'));
 });
 
 
