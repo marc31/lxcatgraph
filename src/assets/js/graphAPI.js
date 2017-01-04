@@ -117,18 +117,21 @@ var graphAPI = (function(){
 
   function setAxisRangeValue( ax, pos, value ){
 
-    var v, update = {};
+    var v, update = {flag:true};
     var p = ( pos === 'start' ) ? 0 : 1;
 
-    if ( layout[ax].type === "log" ) {
+    var path = ax + '.range[' + p + ']';
+    //update[path].range = layout[ax].range;
 
-      v = Math.log( value );
-      update[ax].range[p] = v;
+    if ( layout[ax].type === "log" ) {
+      //var test =  Number( value );
+      v = Math.log10( Number( value ) );
+      update[path] = v;
       Plotly.relayout( graph, update );
 
     } else {
 
-      update[ax].range[p] = value;
+      update[path] = Number( value );
       Plotly.relayout( graph, update );
 
     }
@@ -140,14 +143,11 @@ var graphAPI = (function(){
 
     if ( layout[ax].type === "log" ) {
 
-      var test1 = Math.pow( 10, layout[ax].range[p] );
-      var test2 = test1.toExponential();
-
       return Math.pow( 10, layout[ax].range[p] ).toExponential();
 
     } else {
 
-      return layout[ar].range[p];
+      return layout[ax].range[p];
 
     }
   }
@@ -176,6 +176,7 @@ var graphAPI = (function(){
 
     init: function () {
       init();
+      return graph;
     },
 
     addTraces: function( input ){

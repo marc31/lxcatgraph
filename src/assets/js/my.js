@@ -3,7 +3,7 @@
   'use strict';
 
   //// INITIALISATION
-  graphAPI.init();
+  var graph = graphAPI.init();
 
   //// TEST PARSEUR
   // var filePath = 'assets/data/cross_section2.txt';
@@ -29,7 +29,6 @@
   ///// Init Display courbe.
   (function(){
     // Set axis range inputs values.
-
     inpXstart.value = graphAPI.getAxisRangeValue( 'xaxis', 'start' );
     inpXend.value = graphAPI.getAxisRangeValue( 'xaxis', 'end' );
     inpYstart.value = graphAPI.getAxisRangeValue( 'yaxis', 'start' );
@@ -38,6 +37,30 @@
   })();
 
   ///// Apply Events.
+
+  graph.on('plotly_relayout', function( e ){
+    // If event emit from setAxisRangeValue method, stop here.
+    if ( e.flag ) return;
+    // Else, update inputs axis range values.
+    inpXstart.value = graphAPI.getAxisRangeValue( 'xaxis', 'start' );
+    inpXend.value = graphAPI.getAxisRangeValue( 'xaxis', 'end' );
+    inpYstart.value = graphAPI.getAxisRangeValue( 'yaxis', 'start' );
+    inpYend.value = graphAPI.getAxisRangeValue( 'yaxis', 'end' );
+  });
+
+  inpXstart.onblur = function( e ) {
+    graphAPI.setAxisRangeValue( 'xaxis', 'start', e.target.value );
+  }
+  inpXend.onblur = function( e ) {
+    graphAPI.setAxisRangeValue( 'xaxis', 'end', e.target.value );
+  }
+  inpYstart.onblur = function( e ) {
+    graphAPI.setAxisRangeValue( 'yaxis', 'start', e.target.value );
+  }
+  inpYend.onblur = function( e ) {
+    graphAPI.setAxisRangeValue( 'yaxis', 'end', e.target.value );
+  }
+
   inpGrid.onchange = function( e ){
     // Get checkbox state.
     var state = this.checked;
