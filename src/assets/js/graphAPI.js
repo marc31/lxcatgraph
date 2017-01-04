@@ -114,9 +114,46 @@ var graphAPI = (function(){
     return result;
   }
 
+  function setAxisRangeValue( ax, pos, value ){
+
+    var v, update = {};
+    var p = ( pos === 'start' ) ? 0 : 1;
+
+    if ( layout[ax].type === "log" ) {
+
+      v = Math.log( value );
+      update[ax].range[p] = v;
+      Plotly.relayout( graph, update );
+
+    } else {
+
+      update[ax].range[p] = value;
+      Plotly.relayout( graph, update );
+
+    }
+  }
+
+  function getAxisRangeValue( ax, pos ){
+
+    var p = ( pos === 'start' ) ? 0 : 1;
+
+    if ( layout[ax].type === "log" ) {
+
+      var test1 = Math.pow( 10, layout[ax].range[p] );
+      var test2 = test1.toExponential();
+
+      return Math.pow( 10, layout[ax].range[p] ).toExponential();
+
+    } else {
+
+      return layout[ar].range[p];
+
+    }
+  }
+
   function init( layoutname, xaxisname, yaxisname ){
     // Create the layout.
-    layout = getLayout( layoutname, xaxisname, yaxisname );
+    layout = constructLayout( layoutname, xaxisname, yaxisname );
     // Resize layout according device viewport.
     setLayoutSize( layout );
     // Create the Plot instance.
@@ -131,6 +168,10 @@ var graphAPI = (function(){
    */
 
   return {
+
+    getAxisRangeValue: getAxisRangeValue,
+    setAxisRangeValue: setAxisRangeValue,
+
     init: function () {
       init();
     },
