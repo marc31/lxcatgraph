@@ -123,7 +123,7 @@ gulp.task('copydata', function() {
 
 
 // Build the "dist" folder by running all of the above tasks
-gulp.task('build', ['clean', 'myjs', 'mycss', 'inject', 'htmlmin', 'copy']);
+gulp.task('build', ['clean', 'htmlmin']);
 
 
 gulp.task('default', ['clean', 'myjs', 'mycss', 'inject', 'htmlmin', 'copy'], function() {

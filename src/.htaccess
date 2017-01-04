@@ -1,7 +1,7 @@
 allow from all
 
 # Set the default handler.
-DirectoryIndex index.php
+DirectoryIndex index.html
 
 # Désactiver l'affichage du contenu des répertoires
 Options All -Indexes
@@ -31,33 +31,7 @@ AddDefaultCharset UTF-8
   satisfy all
 </Files>
 
-
 ErrorDocument 404 /404.html
-
-
-# Désactiver le hotlinking de vos images.
-# Ceci empeche que qq fasse un lien directement vers vos image sur son site
-# Ce qui prends de la bande passante a votre place.
-#<IfModule mod_rewrite.c>
-#  RewriteEngine On
-#  RewriteCond %{HTTP_REFERER} !^$
-#  RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?ginkgo-web.fr [NC]
-#  RewriteRule \.(jpg|jpeg|png|gif|svg)$ http://fakeimg.pl/400x200/?text=Pas_touche_aux_images [NC,R,L]
-#</IfModule>
-
-# Redirection du site sans www vers www
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{HTTP_HOST} ^ginkgo-web.fr [NC]
-  RewriteRule ^(.*)$ http://www.ginkgo-web.fr/$1 [R=301]
-</IfModule>
-
-# Redirection vers HTTPS
-#<IfModule mod_rewrite.c>
-#RewriteEngine on
-#RewriteCond     %{SERVER_PORT} ^80$
-#RewriteRule     ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R]
-#</IfModule>
 
 # Protection contre les injections de fichiers
 <IfModule mod_rewrite.c>
@@ -91,57 +65,10 @@ ErrorDocument 404 /404.html
   RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
 </IfModule>
 
-
 # set the correct mime type for woff2 font type
 <IfModule mod_mime.c>
   AddType application/font-woff2    woff2
 </IfModule>
-
-# ATTENTION DEV MODE =>  Mise en cache des fichiers dans le navigateur
-#<IfModule mod_expires.c>
-#  ExpiresActive On
-#  ExpiresDefault "access plus 1 seconds"
-#
-#  ExpiresByType text/html "access plus 1 seconds"
-#  ExpiresByType text/xml "access plus 1 seconds"
-#  ExpiresByType application/xml "access plus 1 seconds"
-#  ExpiresByType application/json "access plus 1 seconds"
-#  ExpiresByType application/pdf "access plus 1 seconds"
-#
-#  ExpiresByType application/rss+xml "access plus 1 seconds"
-#  ExpiresByType application/atom+xml "access plus 1 seconds"
-#
-#  ExpiresByType application/x-font-ttf "access plus 1 seconds"
-#  ExpiresByType font/opentype "access plus 1 seconds"
-#  ExpiresByType application/x-font-woff "access plus 1 seconds"
-#  ExpiresByType application/x-font-woff2 "access plus 1 seconds"
-#  ExpiresByType image/svg+xml "access plus 1 seconds"
-#  ExpiresByType application/vnd.ms-fontobject "access plus 1 seconds"
-#  ExpiresByType application/font-ttf "access plus 1 seconds"
-#  ExpiresByType application/font-woff "access plus 1 seconds"
-#  ExpiresByType application/font-woff2 "access plus 1 seconds"
-#
-#  ExpiresByType image/jpg "access plus 1 seconds"
-#  ExpiresByType image/jpeg "access plus 1 seconds"
-#  ExpiresByType image/gif "access plus 1 seconds"
-#  ExpiresByType image/png "access plus 1 seconds"
-#  ExpiresByType image/svg+xml "access plus 1 seconds"
-#  ExpiresByType image/svg "access plus 1 seconds"
-#
-#  ExpiresByType video/ogg "access plus 1 seconds"
-#  ExpiresByType audio/ogg "access plus 1 seconds"
-#  ExpiresByType video/mp4 "access plus 1 seconds"
-#  ExpiresByType video/webm "access plus 1 seconds"
-#
-#  ExpiresByType text/css "access plus 1 seconds"
-#  ExpiresByType text/javascript "access plus 1 seconds"
-#  ExpiresByType application/x-javascript "access plus 1 seconds"
-#  ExpiresByType application/javascript "access plus 1 seconds"
-#
-#  ExpiresByType application/x-shockwave-flash "access plus 1 seconds"
-#  ExpiresByType image/x-icon "access plus 1 seconds"
-#
-#</IfModule>
 
 # Mise en cache des fichiers dans le navigateur
 <IfModule mod_expires.c>

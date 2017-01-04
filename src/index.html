@@ -1,36 +1,31 @@
 <!DOCTYPE html>
-<html lang="fr" class="no-js">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <title>LXCat Data Visualization</title>
+  <!-- Meta -->
+  <link rel="canonical" href="http://lxcat.lechakidor.fr">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="http://www.ginkgo-web.fr">
-  <title>Ginkgo Web : développeurs freelance de sites internet et mobiles</title>
-  <meta name="description" content="Développeurs de sites web Freelance à Brest et Toulouse, nous proposons nos compétences en intégration HTML5/CSS3, programmation PHP et JavaScript, interactions et animations d'interfaces.">
-  <meta name="keywords" content="web développeur, freelance, web designer, responsive design, php, javascript, intégration, ergonomie, site internet, site web, cms, référencement, SEO"><meta name="abstract" content="Le site présente les services et compétences proposés par les développeurs et web designeurs auto-entrepreneurs collaborant dans le cadre de Ginkgo-Web."><meta name="author" content="Dimitri Aguera et Marc Foletto"><meta name="designer" content="Dimitri Aguera et Marc Foletto"><meta name="copyright" content="Dimitri Aguera et Marc Foletto"><meta name="publisher" content="Dimitri Aguera et Marc Foletto"><link rel="image_src" href="http://www.ginkgo-web.fr/assets/images/favico/android-chrome-192x192.png"><!-- Facebook -->
-  <meta property="og:title" content="Ginkgo Web : développeurs freelance de sites internet et mobiles">
-  <meta property="og:site_name" content="Ginkgo Web">
-  <meta property="og:description" content="Développeurs de sites web Freelance à Brest et Toulouse, nous proposons nos compétences en intégration HTML5/CSS3, programmation PHP et JavaScript, interactions et animations d'interfaces.">
-  <meta property="og:url" content="http://www.ginkgo-web.fr">
-  <meta property="og:image" content="http://www.ginkgo-web.fr/assets/images/favico/android-chrome-192x192.png">
-  <meta property="og:locale" content="fr_FR">
+  <meta name="description" content="Tool for viewing LXCat data. Made by Ginkgo-web.">
+  <meta property="og:title" content="Tool for viewing LXCat data">
+  <meta property="og:site_name" content="LXCat Data Visualization">
+  <meta property="og:description" content="Tool for viewing LXCat data. Made by Ginkgo-web.">
+  <meta property="og:url" content="http://lxcat.lechakidor.fr">
+  <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
   <script type="application/ld+json">
       {
         "@context" : "http://schema.org",
         "@type" : "WebSite",
-        "name" : "Ginkgo Web",
-        "description": "Développeurs de sites web Freelance à Brest et Toulouse, nous proposons nos compétences en intégration HTML5/CSS3, programmation PHP et JavaScript, interactions et animations d'interfaces.",
-        "keywords" : "web développeur, freelance, web designer, responsive design, php, javascript, intégration, ergonomie, site internet, site web, cms, référencement, SEO",
+        "name" : "LXCat Data Visualization",
+        "description": "Tool for viewing LXCat data",
         "author": "Dimitri Aguera et Marc Foletto",
-        "image": "http://www.ginkgo-web.fr/assets/images/favico/android-chrome-192x192.png"
-        "url" : "http://www.ginkgo-web.fr"
+        "url" : "http://lxcat.lechakidor.fr"
       }
   </script>
   <!-- Stylesheet -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="assets/css/normalize.css">
-  <link rel="stylesheet" href="assets/css/mycss.css">
+  <link rel="stylesheet" href="assets/css/style.min.css">
   <!-- endinject -->
 </head>
 <body>
@@ -39,7 +34,7 @@
   <div class="sub-title">Made by Dimitri Aguera and Marc Foletto - <a href="http://www.ginkgo-web.fr" title="Ginkgo-web website" target="_blank">Ginkgo-web</a></div>
 
   <div id="add-file" class="form-style-1">
-    <label for="input-file" style="color:#333;">Choose one or more input file downloaded from <a href="http://www.lxcat.net">LXCat</a></label>
+    <label for="input-file" style="color:#333;">Choose one or more input files downloaded from <a href="http://www.lxcat.net">LXCat</a></label>
     <input type="file" id="input-file" name="files[]" multiple />
     <output id="list"></output>
   </div>
@@ -85,13 +80,10 @@
     </form>
   </div>
 
+  <div id="plotly" class="sub-title">We use <a href="https://plot.ly/" title="Plotly website" target="_blank">Plotly</a> under license <a href="http://opensource.org/licenses/MIT" title="MIT license" target="_blank">MIT</a></div>
   <!-- Script -->
   <!-- inject:js -->
-  <script src="assets/js/plotly.js"></script>
-  <script src="assets/js/utilityFunctions.js"></script>
-  <script src="assets/js/readData.js"></script>
-  <script src="assets/js/graphAPI.js"></script>
-  <script src="assets/js/my.js"></script>
+  <script src="assets/js/prod.min.js"></script>
   <!-- endinject -->
 </body>
 </html>
