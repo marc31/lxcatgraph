@@ -39,7 +39,7 @@ DATABASE:         SIGLO database
 PERMLINK:         www.lxcat.net/SIGLO
 DESCRIPTION:      The SIGLO database is the "in-house" data  used by the group GREPHE at LAPLACE in Toulouse. The data
                   are taken from different sources as indicated for each gas. Please refer to original sources in
-                  publications.  
+                  publications.
                   An early version of this data file, "siglo.sec", was distributed with BOLSIG.  The main changes in the
                   present version are :
                   The format has been changed to be compatible with BOLSIG+.
@@ -51,155 +51,151 @@ DESCRIPTION:      The SIGLO database is the "in-house" data  used by the group G
                   base).
                   O2 : We recommend using the data in the Phelps database for this species.
                   H2 : We recommend using the data in the Phelps database for this species.
-                  Cl2 : The present data are an updated compilation (Jan 2012) by J Gregorio and LC Pitchford.    
+                  Cl2 : The present data are an updated compilation (Jan 2012) by J Gregorio and LC Pitchford.
                   Cu : Feb 2012. Digitized from Tkachev A N, Fedenev A A and Yakovlenko S I, Laser Phys. vol.17, p. 775
                   (2007)
                   Kr :  Nov 2012.  We re-digitized the data from figs. 1 and 5 in H. Date, Y. Sakai and H. Tagashira, J.
                   Phys. D 22 1478 (1989).  With respect to the previous data from this same reference in the SIGLO
                   database, there are some changes in the threshold values and in the magnitudes of the inelastic cross
                   sections.
-CONTACT:          LC Pitchford and JP Boeuf 
+CONTACT:          LC Pitchford and JP Boeuf
                   pitchford@@laplace.univ-tlse.fr and jpb@@laplace.univ-tlse.fr
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ************************************************************************************************************************
 
-COMMENT: J. Meunier, Ph. Belenguer and J.P. Boeuf, J. Appl. Phys. 78, 731 (1995) , extrapolation of allowed cross sections to 1
-         kV using log(energy)/energy scaling.
+COMMENT: From the compilation of A.V. Phelps.
 
-********************************************************** Ne **********************************************************
+********************************************************** He **********************************************************
 
-ELASTIC
-Ne
- 2.715000e-5
-SPECIES: e / Ne
-PROCESS: E + Ne -> E + Ne, Elastic
-PARAM.:  m/M = 0.00002715, complete set
-COMMENT: elastic momentum transfer.
-UPDATED: 2012-04-13 18:40:03
+EFFECTIVE
+He
+ 1.360000e-4
+SPECIES: e / He
+PROCESS: E + He -> E + He, Effective
+PARAM.:  m/M = 0.000136, complete set
+COMMENT: momentum TRANSFER - FROM CROMPTON ET AL AT LOW ENERGY, HAYASHI AT HIGH ENERGIES.
+UPDATED: 2011-06-06 18:21:14
 COLUMNS: Energy (eV) | Cross section (m2)
 -----------------------------
- 0.000000e+0	1.610000e-21
- 3.000000e-2	4.690000e-21
- 5.000000e-2	5.360000e-21
- 7.000000e-2	6.010000e-21
- 9.000000e-2	6.690000e-21
- 1.200000e-1	7.540000e-21
- 1.500000e-1	8.280000e-21
- 1.800000e-1	8.930000e-21
- 2.000000e-1	9.300000e-21
- 2.500000e-1	1.018000e-20
- 3.000000e-1	1.091000e-20
- 4.000000e-1	1.225000e-20
- 5.000000e-1	1.321000e-20
- 6.000000e-1	1.402000e-20
- 7.000000e-1	1.472000e-20
- 8.000000e-1	1.528000e-20
- 9.000000e-1	1.580000e-20
- 1.000000e+0	1.619000e-20
- 1.200000e+0	1.685000e-20
- 1.500000e+0	1.753000e-20
- 1.800000e+0	1.793000e-20
- 2.000000e+0	1.815000e-20
- 2.500000e+0	1.860000e-20
- 3.000000e+0	1.906000e-20
- 4.000000e+0	1.984000e-20
- 5.000000e+0	2.070000e-20
- 6.000000e+0	2.144000e-20
- 8.000000e+0	2.270000e-20
- 1.000000e+1	2.420000e-20
- 1.200000e+1	2.540000e-20
- 1.500000e+1	2.730000e-20
- 2.000000e+1	2.930000e-20
- 2.500000e+1	2.950000e-20
- 3.000000e+1	2.910000e-20
- 4.000000e+1	2.740000e-20
- 5.000000e+1	2.490000e-20
- 6.000000e+1	2.230000e-20
- 8.000000e+1	1.800000e-20
- 1.000000e+2	1.440000e-20
- 1.200000e+2	1.190000e-20
- 1.500000e+2	8.780000e-21
- 2.000000e+2	6.160000e-21
- 3.000000e+2	3.720000e-21
- 4.000000e+2	2.590000e-21
- 5.000000e+2	1.930000e-21
- 6.000000e+2	1.500000e-21
- 8.000000e+2	1.010000e-21
- 1.000000e+3	7.210000e-22
+ 0.000000e+0	4.960000e-20
+ 1.000000e-3	4.980000e-20
+ 2.000000e-3	5.020000e-20
+ 3.000000e-3	5.070000e-20
+ 5.000000e-3	5.120000e-20
+ 7.000000e-3	5.150000e-20
+ 8.500000e-3	5.180000e-20
+ 1.000000e-2	5.210000e-20
+ 1.500000e-2	5.280000e-20
+ 2.000000e-2	5.350000e-20
+ 3.000000e-2	5.460000e-20
+ 4.000000e-2	5.540000e-20
+ 5.000000e-2	5.620000e-20
+ 7.000000e-2	5.740000e-20
+ 1.000000e-1	5.860000e-20
+ 1.200000e-1	5.940000e-20
+ 1.500000e-1	6.040000e-20
+ 1.700000e-1	6.080000e-20
+ 2.000000e-1	6.160000e-20
+ 2.500000e-1	6.270000e-20
+ 3.000000e-1	6.350000e-20
+ 3.500000e-1	6.420000e-20
+ 4.000000e-1	6.490000e-20
+ 5.000000e-1	6.590000e-20
+ 7.000000e-1	6.730000e-20
+ 1.000000e+0	6.850000e-20
+ 1.200000e+0	6.910000e-20
+ 1.300000e+0	6.920000e-20
+ 1.500000e+0	6.960000e-20
+ 1.700000e+0	6.970000e-20
+ 1.900000e+0	6.980000e-20
+ 2.100000e+0	6.980000e-20
+ 2.200000e+0	6.980000e-20
+ 2.500000e+0	6.960000e-20
+ 2.800000e+0	6.920000e-20
+ 3.000000e+0	6.890000e-20
+ 3.300000e+0	6.820000e-20
+ 3.600000e+0	6.730000e-20
+ 4.000000e+0	6.600000e-20
+ 4.500000e+0	6.490000e-20
+ 5.000000e+0	6.310000e-20
+ 6.000000e+0	6.000000e-20
+ 7.000000e+0	5.680000e-20
+ 8.000000e+0	5.350000e-20
+ 1.000000e+1	4.720000e-20
+ 1.200000e+1	4.200000e-20
+ 1.500000e+1	3.500000e-20
+ 1.700000e+1	3.150000e-20
+ 2.000000e+1	2.640000e-20
+ 2.500000e+1	2.050000e-20
+ 3.000000e+1	1.740000e-20
+ 5.000000e+1	1.100000e-20
+ 7.500000e+1	8.800000e-21
+ 1.000000e+2	7.500000e-21
+ 1.500000e+2	6.050000e-21
+ 2.000000e+2	5.200000e-21
+ 3.000000e+2	4.100000e-21
+ 5.000000e+2	3.000000e-21
+ 7.500000e+2	2.350000e-21
+ 1.000000e+3	1.700000e-21
 -----------------------------
 
 EXCITATION
-Ne -> Ne(3P)
- 2.065000e+1
-SPECIES: e / Ne
-PROCESS: E + Ne -> E + Ne(3P), Excitation
-PARAM.:  E = 20.65 eV, complete set
-COMMENT: excitation (3p).
-UPDATED: 2009-09-09 20:55:16
+He -> He*(19.8eV)
+ 1.980000e+1
+SPECIES: e / He
+PROCESS: E + He -> E + He*(19.8eV), Excitation
+PARAM.:  E = 19.8 eV, complete set
+COMMENT: FROM 1960'S ANALYSIS OF MEIR-LEIBNITZ AND OTHERS BY PHELPS.
+UPDATED: 2010-06-24 15:11:11
 COLUMNS: Energy (eV) | Cross section (m2)
 -----------------------------
- 2.065000e+1	0.000000e+0
- 2.169000e+1	2.680000e-23
- 2.325000e+1	4.360000e-23
- 2.475000e+1	5.300000e-23
- 2.680000e+1	6.110000e-23
- 2.885000e+1	6.540000e-23
- 3.210000e+1	6.800000e-23
- 3.542000e+1	6.900000e-23
- 4.121000e+1	6.600000e-23
- 6.649000e+1	5.000000e-23
- 7.611000e+1	4.500000e-23
- 8.970000e+1	3.900000e-23
- 2.000000e+2	9.200000e-24
- 5.000000e+2	1.700000e-24
+ 1.980000e+1	0.000000e+0
+ 2.002000e+1	4.100000e-22
+ 2.024000e+1	4.600000e-22
+ 2.145000e+1	4.200000e-22
+ 2.180000e+1	5.500000e-22
+ 2.245000e+1	5.500000e-22
+ 2.422000e+1	7.300000e-22
+ 2.532000e+1	9.200000e-22
+ 2.753000e+1	1.080000e-21
+ 2.975000e+1	1.160000e-21
+ 3.418000e+1	1.210000e-21
+ 4.630000e+1	1.210000e-21
+ 1.000000e+2	1.150000e-21
+ 2.000000e+2	1.000000e-21
+ 4.000000e+2	6.000000e-22
+ 7.000000e+2	3.500000e-22
+ 1.000000e+3	2.500000e-22
 -----------------------------
 
 IONIZATION
-Ne -> Ne^+
- 2.156000e+1
-SPECIES: e / Ne
-PROCESS: E + Ne -> E + E + Ne+, Ionization
-PARAM.:  E = 21.56 eV, complete set
-COMMENT: Total ionization, WETZEL (low energy)  amp HEER (higher energy).
-UPDATED: 2011-07-26 13:45:11
+He -> He^+
+ 2.458000e+1
+SPECIES: e / He
+PROCESS: E + He -> E + E + He+, Ionization
+PARAM.:  E = 24.58 eV, complete set
+COMMENT: RAPP AND ENGLANDER-GOLDEN, 1965.
+UPDATED: 2010-03-13 12:15:21
 COLUMNS: Energy (eV) | Cross section (m2)
 -----------------------------
- 2.156000e+1	0.000000e+0
- 2.200000e+1	9.000000e-23
- 2.300000e+1	1.900000e-22
- 2.400000e+1	2.900000e-22
- 2.500000e+1	3.700000e-22
- 2.600000e+1	4.800000e-22
- 2.700000e+1	6.200000e-22
- 2.800000e+1	7.100000e-22
- 2.900000e+1	8.100000e-22
- 3.000000e+1	9.700000e-22
- 3.100000e+1	1.080000e-21
- 3.200000e+1	1.210000e-21
- 3.300000e+1	1.350000e-21
- 3.400000e+1	1.440000e-21
- 3.500000e+1	1.510000e-21
- 3.600000e+1	1.700000e-21
- 3.700000e+1	1.790000e-21
- 3.800000e+1	1.890000e-21
- 3.900000e+1	2.040000e-21
- 4.000000e+1	2.420000e-21
- 5.000000e+1	3.590000e-21
- 6.000000e+1	4.570000e-21
- 7.000000e+1	5.370000e-21
- 8.000000e+1	5.930000e-21
- 9.000000e+1	6.360000e-21
- 1.000000e+2	6.600000e-21
- 1.500000e+2	7.140000e-21
- 2.000000e+2	7.050000e-21
- 3.000000e+2	6.330000e-21
- 4.000000e+2	5.600000e-21
- 5.000000e+2	5.030000e-21
- 6.000000e+2	4.530000e-21
- 7.000000e+2	4.130000e-21
- 8.000000e+2	3.790000e-21
- 9.000000e+2	3.490000e-21
- 1.000000e+3	3.250000e-21
+ 0.000000e+0	0.000000e+0
+ 2.460000e+1	0.000000e+0
+ 3.000000e+1	7.100000e-22
+ 3.400000e+1	1.210000e-21
+ 4.000000e+1	1.780000e-21
+ 4.500000e+1	2.120000e-21
+ 5.000000e+1	2.420000e-21
+ 6.000000e+1	2.890000e-21
+ 7.000000e+1	3.130000e-21
+ 8.000000e+1	3.320000e-21
+ 9.000000e+1	3.440000e-21
+ 1.000000e+2	3.510000e-21
+ 1.500000e+2	3.460000e-21
+ 2.000000e+2	3.240000e-21
+ 3.000000e+2	2.900000e-21
+ 5.000000e+2	2.200000e-21
+ 7.000000e+2	1.800000e-21
+ 1.000000e+3	1.400000e-21
 -----------------------------
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

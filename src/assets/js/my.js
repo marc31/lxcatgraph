@@ -5,13 +5,20 @@
   //// INITIALISATION
   var graph = graphAPI.init();
 
-  //// TEST PARSEUR
-  // var filePath = 'assets/data/cross_section2.txt';
-  // (function(){
-  //   readData.readBolsigFileFormServeur(filePath, function( a ){
-  //     graphAPI.addTraces( a );
-  //   });
-  // })();
+  //// Load exemple of data
+  var filePath = 'assets/data/cross_section_he.txt';
+  (function(){
+    readData.readBolsigFileFormServeur(filePath, function( a ){
+      graphAPI.addTraces( a );
+      graphAPI.updateLayout({
+        title: 'SIGLO database, e / He',
+        'xaxis.title': a[0].axisName.x,
+        'xaxis.autorange': true,
+        'yaxis.title': 'Cross section (m<SUP>2</SUP>)',
+        'yaxis.autorange': true,
+      });
+    });
+  })();
 
   ///// Input buttons.
   var inpGrid = document.getElementById('inp-grid');

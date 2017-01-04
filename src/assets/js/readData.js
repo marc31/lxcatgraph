@@ -140,22 +140,22 @@ var readData = (function(){
           }
           // End of current specie (marker : ********)
           else if (lines[line].substring(0, 15) === '***************') {
-            console.log('**************************');
-            console.log('Change Specie');
+            //console.log('**************************');
+            //console.log('Change Specie');
             comment();
             readingProcess();
           }
           // End of the db  (marker : xxxxxx)
           else if (lines[line].substring(0, 15) === 'xxxxxxxxxxxxxxx') {
             if (line + 1 >= linesLength) {
-              console.log('End of file');
+              //console.log('End of file');
               if (typeof callback === 'function') {
                 callback(datas);
               }
               return datas;
             } else {
-              console.log('xxxxxxxxxxxxxxxxxxx');
-              console.log('Change Db');
+              //console.log('xxxxxxxxxxxxxxxxxxx');
+              //console.log('Change Db');
               db();
               comment();
               readingProcess();
