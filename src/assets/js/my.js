@@ -29,10 +29,12 @@
   ///// Init Display courbe.
   (function(){
     // Set axis range inputs values.
+
     inpXstart.value = graphAPI.getAxisRangeValue( 'xaxis', 'start' );
     inpXend.value = graphAPI.getAxisRangeValue( 'xaxis', 'end' );
     inpYstart.value = graphAPI.getAxisRangeValue( 'yaxis', 'start' );
     inpYend.value = graphAPI.getAxisRangeValue( 'yaxis', 'end' );
+
   })();
 
   ///// Apply Events.
@@ -76,6 +78,14 @@
         readData.readBolsigFileLineByLine(this.result,
           function( a ) {
             graphAPI.addTraces(a);
+            graphAPI.updateLayout({
+              title: '',
+              'xaxis.title': a[0].axisName.x,
+              'xaxis.autorange': true,
+              'yaxis.title': a[0].axisName.y,
+              'yaxis.autorange': true,
+            });
+
           }
         );
       };

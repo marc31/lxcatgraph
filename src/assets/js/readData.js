@@ -102,7 +102,15 @@ var readData = (function(){
         }
 
         // Reading Data
-        var data = {x:[],y:[],name:state.process,dbname:state.db}, num;
+        var data = {
+          x:[],
+          y:[],
+          name:state.process,
+          text:state.process+'<br />'+state.db,
+          axisName:state.axisName,
+          hoverinfo:'x+y+text'
+        }, num;
+
         do{
           num = lines[line].trim().replace(/\s/g, '*!*!*').split('*!*!*');
           data.x.push(parseFloat(num[0]));

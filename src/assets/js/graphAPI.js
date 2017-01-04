@@ -37,7 +37,7 @@ var graphAPI = (function(){
     },
     marker: {
       size: 5
-    }
+    },
   };
 
   var data = [trace1, trace2];
@@ -71,6 +71,7 @@ var graphAPI = (function(){
     autosize: false,
     width: 1000,
     height: 800,
+    hovermode:'closest',
   };
 
   var defaultAxis = {
@@ -152,8 +153,9 @@ var graphAPI = (function(){
   }
 
   function init( layoutname, xaxisname, yaxisname ){
+    var l = layoutname || '', x = xaxisname || '', y = yaxisname || '';
     // Create the layout.
-    layout = constructLayout( layoutname, xaxisname, yaxisname );
+    layout = constructLayout( l, x, y );
     // Resize layout according device viewport.
     setLayoutSize( layout );
     // Create the Plot instance.
