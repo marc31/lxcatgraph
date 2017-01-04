@@ -2,6 +2,9 @@
 
   'use strict';
 
+  //// INITIALISATION
+  graphAPI.init();
+
   //// TEST PARSEUR
   var filePath = 'assets/data/cross_section2.txt';
   (function(){
