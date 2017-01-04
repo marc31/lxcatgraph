@@ -3,6 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>LXCat Data Visualization</title>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="http://www.ginkgo-web.fr">
+  <title>Ginkgo Web : développeurs freelance de sites internet et mobiles</title>
+  <meta name="description" content="Développeurs de sites web Freelance à Brest et Toulouse, nous proposons nos compétences en intégration HTML5/CSS3, programmation PHP et JavaScript, interactions et animations d'interfaces.">
+  <meta name="keywords" content="web développeur, freelance, web designer, responsive design, php, javascript, intégration, ergonomie, site internet, site web, cms, référencement, SEO"><meta name="abstract" content="Le site présente les services et compétences proposés par les développeurs et web designeurs auto-entrepreneurs collaborant dans le cadre de Ginkgo-Web."><meta name="author" content="Dimitri Aguera et Marc Foletto"><meta name="designer" content="Dimitri Aguera et Marc Foletto"><meta name="copyright" content="Dimitri Aguera et Marc Foletto"><meta name="publisher" content="Dimitri Aguera et Marc Foletto"><link rel="image_src" href="http://www.ginkgo-web.fr/assets/images/favico/android-chrome-192x192.png"><!-- Facebook -->
+  <meta property="og:title" content="Ginkgo Web : développeurs freelance de sites internet et mobiles">
+  <meta property="og:site_name" content="Ginkgo Web">
+  <meta property="og:description" content="Développeurs de sites web Freelance à Brest et Toulouse, nous proposons nos compétences en intégration HTML5/CSS3, programmation PHP et JavaScript, interactions et animations d'interfaces.">
+  <meta property="og:url" content="http://www.ginkgo-web.fr">
+  <meta property="og:image" content="http://www.ginkgo-web.fr/assets/images/favico/android-chrome-192x192.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+      {
+        "@context" : "http://schema.org",
+        "@type" : "WebSite",
+        "name" : "Ginkgo Web",
+        "description": "Développeurs de sites web Freelance à Brest et Toulouse, nous proposons nos compétences en intégration HTML5/CSS3, programmation PHP et JavaScript, interactions et animations d'interfaces.",
+        "keywords" : "web développeur, freelance, web designer, responsive design, php, javascript, intégration, ergonomie, site internet, site web, cms, référencement, SEO",
+        "author": "Dimitri Aguera et Marc Foletto",
+        "image": "http://www.ginkgo-web.fr/assets/images/favico/android-chrome-192x192.png"
+        "url" : "http://www.ginkgo-web.fr"
+      }
+  </script>
   <!-- Stylesheet -->
   <!-- inject:css -->
   <link rel="stylesheet" href="assets/css/normalize.css">
@@ -12,9 +36,10 @@
 <body>
 
   <h1>LXCat Data Visualization</h1>
+  <div class="sub-title">Made by Dimitri Aguera and Marc Foletto - <a href="http://www.ginkgo-web.fr" title="Ginkgo-web website" target="_blank">Ginkgo-web</a></div>
 
-  <div id="add-file">
-    <label for="input-file">Choose one or more input file downloaded from <a href="http://www.lxcat.net">LXCat</a></label><br />
+  <div id="add-file" class="form-style-1">
+    <label for="input-file" style="color:#333;">Choose one or more input file downloaded from <a href="http://www.lxcat.net">LXCat</a></label>
     <input type="file" id="input-file" name="files[]" multiple />
     <output id="list"></output>
   </div>
@@ -22,34 +47,43 @@
 
   <div id="graph"><!-- Plotly chart will be drawn inside this DIV --></div>
 
-  <div id="form-wrapper">
+  <div id="form-wrapper" class="form-style-1">
+    <form id="mysuperform">
     <!--Input for grid-->
-    <label for="inp-grid">Grid : </label>
-    <input type="checkbox" id="inp-grid" value="checkbox1" checked="true">
+    <label class="inline marged" style="margin-right:50px;">Grid :
+      <input type="checkbox" id="inp-grid" value="checkbox1" checked="true">
+    </label>
     <!--Input for display point mode-->
-    <div id="display-point" style="display:inline-block;">
-    <label>Display : </label>
-      <input type="radio" name="displayPointRadio" value="lines"> Line
-      <input type="radio" name="displayPointRadio" value="markers"> Points
-      <input type="radio" name="displayPointRadio" value="lines+markers" checked="true"> Both<br>
+    <div id="display-point" class="inline marged">
+      <label class="inline">Line
+        <input type="radio" name="displayPointRadio" value="lines">
+      </label>
+      <label class="inline">Points
+        <input type="radio" name="displayPointRadio" value="markers">
+      </label>
+      <label class="inline">Both
+        <input type="radio" name="displayPointRadio" value="lines+markers" checked="true">
+      </label>
     </div>
     <!--Input for X display mode linear or logarithmic-->
-    <div id="display-linear-xaxis">
-    <label>X axis : </label>
+    <div id="display-linear-xaxis" class="marged">
+    <label class="inline">X axis : </label>
       <input type="text" id="x-start" name="xstart"> to <input type="text" id="x-end" name="xend">
       <input type="radio" name="displayLinearRadioX" value="log" checked="true"> Log
-      <input type="radio" name="displayLinearRadioX" value="linear"> Linear<br>
+      <input type="radio" name="displayLinearRadioX" value="linear"> Linear
     </div>
     <!--Input for Y display mode linear or logarithmic-->
-    <div id="display-linear-yaxis">
-    <label>Y axis : </label>
+    <div id="display-linear-yaxis" class="marged">
+    <label class="inline">Y axis : </label>
       <input type="text" id="y-start" name="ystart"> to <input type="text" id="y-end" name="yend">
       <input type="radio" name="displayLinearRadioY" value="log" checked="true"> Log
-      <input type="radio" name="displayLinearRadioY" value="linear"> Linear<br>
+      <input type="radio" name="displayLinearRadioY" value="linear"> Linear
     </div>
+    <div class="marged">
+      <input type="button" id="clear-graph" name="ClearGraph" value="Clear Graph">
+    </div>
+    </form>
   </div>
-
-  <input type="button" id="clean-graph" name="CleanGraph" value="Clean Graph">
 
   <!-- Script -->
   <!-- inject:js -->

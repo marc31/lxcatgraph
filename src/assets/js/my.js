@@ -5,32 +5,20 @@
   //// INITIALISATION
   var graph = graphAPI.init();
 
-  //// Load exemple of data
-  var filePath = 'assets/data/cross_section_he.txt';
-  (function(){
-    readData.readBolsigFileFormServeur(filePath, function( a ){
-      graphAPI.addTraces( a );
-      graphAPI.updateLayout({
-        title: 'SIGLO database, e / He',
-        'xaxis.title': a[0].axisName.x,
-        'xaxis.autorange': true,
-        'yaxis.title': 'Cross section (m<SUP>2</SUP>)',
-        'yaxis.autorange': true,
-      });
-    });
-  })();
-
   ///// Input buttons.
   var inpGrid = document.getElementById('inp-grid');
   var inpDisplayPoint = document.getElementById('display-point');
   var inpDisplayLinearX = document.getElementById('display-linear-xaxis');
   var inpDisplayLinearY = document.getElementById('display-linear-yaxis');
   var inputFile = document.getElementById('input-file');
-  var inputCleanGraph = document.getElementById('clean-graph');
+  var inputCleanGraph = document.getElementById('clear-graph');
   var inpXstart = document.getElementById('x-start');
   var inpXend = document.getElementById('x-end');
   var inpYstart = document.getElementById('y-start');
   var inpYend = document.getElementById('y-end');
+  
+
+  document.getElementById('mysuperform').reset();
 
 
   ///// Init Display courbe.
@@ -192,5 +180,19 @@
     return result;
   }
   
+  //// Load exemple of data
+  var filePath = 'assets/data/cross_section_he.txt';
+  (function(){
+    readData.readBolsigFileFormServeur(filePath, function( a ){
+      graphAPI.addTraces( a );
+      graphAPI.updateLayout({
+        title: 'SIGLO database, e / He',
+        'xaxis.title': a[0].axisName.x,
+        'xaxis.autorange': true,
+        'yaxis.title': 'Cross section (m<SUP>2</SUP>)',
+        'yaxis.autorange': true,
+      });
+    });
+  })();
 
 })();

@@ -61,7 +61,7 @@ var graphAPI = (function(){
 
   function setLayoutSize(){
     var s = uf.getViewport();
-    layout.width = Math.max( s.w * ( 2/3 ), 500);
+    layout.width = Math.max( s.w - 30, 500);
     layout.height = Math.max( s.h * ( 4/5 ), 500);
   }
 
@@ -103,6 +103,8 @@ var graphAPI = (function(){
   function getAxisRangeValue( ax, pos ){
 
     var p = ( pos === 'start' ) ? 0 : 1;
+    
+    layout[ax].range = ( layout[ax].range ) ? layout[ax].range : [];
 
     if ( layout[ax].type === "log" ) {
 
