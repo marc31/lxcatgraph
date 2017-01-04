@@ -3,19 +3,20 @@
   'use strict';
 
   //// TEST PARSEUR
-  var filePath = 'assets/data/cross_section2.txt';
-  (function(){
-    readData.readBolsigFile( filePath, function( a ){
-      graphAPI.addTraces( a );
-    });
-
-  })();
+  // var filePath = 'assets/data/cross_section2.txt';
+  // (function(){
+  //   readData.readBolsigFileFormServeur(filePath, function( a ){
+  //     graphAPI.addTraces( a );
+  //   });
+  // })();
 
   ///// Input buttons.
   var inpGrid = document.getElementById('inp-grid');
   var inpDisplayPoint = document.getElementById('display-point');
   var inpDisplayLinearX = document.getElementById('display-linear-xaxis');
   var inpDisplayLinearY = document.getElementById('display-linear-yaxis');
+  var inputFile = document.getElementById('inputfile');
+
 
   ///// Apply Events.
   inpGrid.onchange = function( e ){
@@ -28,6 +29,46 @@
       'yaxis.showgrid': state
     });
   };
+
+
+  inputFile.addEventListener('change', function(evt){
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process text files.
+      if (!f.type.match('text.*')) {
+        alert('File must be a text');
+        continue;
+      }
+
+      // List File
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+        f.size, ' bytes, last modified: ',
+        f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+        '</li>');
+
+      var reader = new FileReader();
+
+      reader.onload = function(progressEvent){
+        readData.readBolsigFileLineByLine(this.result,
+          function( a ) {
+            graphAPI.addTraces(a);
+          }
+        );
+      };
+      reader.readAsText(files[i]);
+    }
+
+
+    // Add list File.
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+  }, false);
+
+
 
  inpDisplayLinearX.onchange = function( e ){
     // Get linear radio value.
