@@ -110,9 +110,9 @@ var graphAPI = (function(){
     return result;
   }
 
-  function init(){
+  function init( layoutname, xaxisname, yaxisname ){
     // Create the layout.
-    var layout = getLayout( "Une super courbe", "Energy (eV)", "Cross section (m²)" );
+    var layout = getLayout( layoutname, xaxisname, yaxisname );
     // Resize layout according device viewport.
     setLayoutSize( layout );
     // Create the Plot instance.
