@@ -25,7 +25,7 @@ var readData = (function(){
             state.db = lines[line].slice(9).trim();
             line++;
             //console.log('Start DB : ' + (line - 1));
-            console.log('Db name : ' + state.db);
+            //console.log('Db name : ' + state.db);
             break;
           }
         }
@@ -56,7 +56,7 @@ var readData = (function(){
             var deb = lines[line].indexOf('* ') + 2 ;
             var end = lines[line].lastIndexOf(' *');
             state.specie = lines[line].substring(deb,end);
-            console.log('Specie name : ' + state.specie);
+            //console.log('Specie name : ' + state.specie);
 
             line++;
             //console.log('End of comment : ' + line);
@@ -71,8 +71,8 @@ var readData = (function(){
         for (line ; line < linesLength ; line++){
           if (lines[line].substring(0, 8) === 'PROCESS:') {
             state.process = lines[line].slice(8);
-            console.log('Process name : ' + state.process);
-            console.log('Process Line : ' + line);
+            //console.log('Process name : ' + state.process);
+            //console.log('Process Line : ' + line);
             line++;
             break;
           }
@@ -85,8 +85,8 @@ var readData = (function(){
             axisName = lines[line].slice(8).split('|');
             state.axisName.x = axisName[0].trim();
             state.axisName.y = axisName[1].trim();
-            console.log('Axis name x : ' + state.axisName.x);
-            console.log('Axis name y : ' + state.axisName.y);
+            //console.log('Axis name x : ' + state.axisName.x);
+            //console.log('Axis name y : ' + state.axisName.y);
             line++;
             break;
           }
