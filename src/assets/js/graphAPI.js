@@ -4,16 +4,6 @@ var graphAPI = (function(){
 
   var graph = document.getElementById('graph');
 
-  var tracePattern = {
-    type: 'scatter',
-    line: {
-      width: 1
-    },
-    marker: {
-      size: 5
-    }
-  };
-
   var trace1 = {
     x: [0.000000e+0,1.000000e-4,3.514000e-2,7.152000e-2,1.091700e-1,1.371370e+0,5.918310e+0,8.440610e+0,1.102264e+1,1.379108e+1,1.657924e+1,1.918366e+1,2.217395e+1,2.560725e+1,2.954921e+1,3.407519e+1,3.790451e+1,4.215191e+1,4.686301e+1,
         5.588529e+1,6.660830e+1,7.935261e+1,9.449926e+1,1.125011e+2,1.338963e+2,1.593245e+2,1.895461e+2,2.254644e+2,3.188895e+2,3.791894e+2,4.508559e+2,5.360318e+2,6.372635e+2,7.575776e+2,9.005711e+2],
@@ -50,20 +40,36 @@ var graphAPI = (function(){
 
   var data = [trace1, trace2];
 
-  var layout = {
-    title: "Une super courbe",
+  /**
+   * 
+   * Defaults settings.
+   * 
+   */
+
+  var conf = {
+    displayModeBar: true, 
+    displaylogo: false, 
+    scrollZoom: true, 
+    modeBarButtonsToRemove: ['sendDataToCloud', 'zoomIn2d', 'zoomOut2d', 'lasso2d', 'select2d']
+  };
+
+  var tracePattern = {
+    type: 'scatter',
+    line: {
+      width: 1
+    },
+    marker: {
+      size: 5
+    }
+  };
+
+  var defaultLayout = {
     autosize: false,
     width: 1000,
     height: 800,
-    // margin: {
-    //   l: 50,
-    //   r: 50,
-    //   b: 50,
-    //   t: 50,
-    //   pad: 4
-    // },
-    xaxis: {
-      title:"Energy (eV)",
+  };
+
+  var defaultAxis = {
       type: 'log',
       ticks: "inside",
       dtick: "D1", // En mode log, affiche les 10+ small digits.
@@ -77,29 +83,53 @@ var graphAPI = (function(){
       linecolor: '#333',
       linewidth: 1,
       mirror: true
-    },
-    yaxis: {
-      autosize: false,
-      title:"Cross section (m²)",
-      type: 'log',
-      ticks: "inside",
-      showtickprefix: "first",
-      dtick: "D1",
-      exponentformat: 'e',
-      showexponent: 'All',
-      tickcolor: "#333",
-      gridcolor: "#ddd",
-      // showgrid: false,
-      autorange: true,
-      linecolor: '#333',
-      linewidth: 1,
-      mirror: true
-    }
   };
 
-  Plotly.newPlot( graph, data, layout, {displaylogo: false, modeBarButtonsToRemove: ['sendDataToCloud', 'zoomIn2d', 'zoomOut2d']} );
+  /**
+   * 
+   * Privates methods.
+   * 
+   */
+
+  function setLayoutSize( layout ){
+    var s = uf.getViewport();
+    layout.width = Math.max( s.w * ( 2/3 ), 500);
+    layout.height = Math.max( s.h * ( 4/5 ), 500);
+  }
+
+  function getAxis( options ){
+    var result = Object.assign( {}, defaultAxis, options );
+    return result;
+  }
+
+  function getLayout( layoutname, xaxisname, yaxisname ){
+    var result = Object.assign( {}, defaultLayout );
+    result.title = layoutname;
+    result.xaxis = getAxis( {title: xaxisname} );
+    result.yaxis = getAxis( {title: yaxisname} );
+    return result;
+  }
+
+  function init(){
+    // Create the layout.
+    var layout = getLayout( "Une super courbe", "Energy (eV)", "Cross section (m²)" );
+    // Resize layout according device viewport.
+    setLayoutSize( layout );
+    // Create the Plot instance.
+    Plotly.newPlot( graph, data, layout, conf );
+  }
+
+
+  /**
+   * 
+   * Public Methods.
+   * 
+   */
 
   return {
+    init: function () {
+      init();
+    },
 
     addTraces: function( input ){
       var value;
