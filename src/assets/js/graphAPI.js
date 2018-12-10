@@ -47,7 +47,7 @@ var graphAPI = (function(){
       gridcolor: "#ddd",
       // showgrid: false,
       // showticklabels: false
-      autorange: true,
+      autorange: false,
       linecolor: '#333',
       linewidth: 1,
       mirror: true

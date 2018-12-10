@@ -99,9 +99,9 @@
             graphAPI.updateLayout({
               title: '',
               'xaxis.title': a[0].axisName.x,
-              'xaxis.autorange': true,
+              'xaxis.autorange': false,
               'yaxis.title': a[0].axisName.y,
-              'yaxis.autorange': true,
+              'yaxis.autorange': false,
             });
 
           }
@@ -188,9 +188,9 @@
       graphAPI.updateLayout({
         title: 'SIGLO database, e / He',
         'xaxis.title': a[0].axisName.x,
-        'xaxis.autorange': true,
+        'xaxis.autorange': false,
         'yaxis.title': 'Cross section (m<SUP>2</SUP>)',
-        'yaxis.autorange': true,
+        'yaxis.autorange': false,
       });
     });
   })();

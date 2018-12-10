@@ -72,22 +72,19 @@ gulp.task('mycss', function() {
 });
 
 gulp.task('test', function () {
-  console.log(PATHS.mycss.map(function(x){return '../dist/assets/' + x.replace('scss', 'css');}));
+  console.log(PATHS.mycss.map(function(x){return '../dist/' + x.replace('scss', 'css');}));
 });
 
 
-gulp.task('inject',['mycss', 'myjs'], function () {
+gulp.task('injectcss',['mycss'], function () {
 
   var target = gulp.src('index.html');
 
   var sources;
   if(isProduction) {
-    sources = gulp.src(['../dist/assets/js/prod.min.js','../dist/assets/css/style.min.css'], {read: false});
+    sources = gulp.src(['../dist/assets/css/style.min.css'], {read: false});
   } else {
-    sources = PATHS.libjs;
-    sources = sources.concat(PATHS.myjs);
-    sources = sources.concat(PATHS.mycss.map(function(x){return '../dist/' + x.replace('scss', 'css');}));
-    //console.log(sources);
+    sources = PATHS.mycss.map(function(x){return '../dist/' + x.replace('scss', 'css');});
     sources = gulp.src(sources, {read: false});
   }
   return target
@@ -95,6 +92,29 @@ gulp.task('inject',['mycss', 'myjs'], function () {
     .pipe(gulp.dest('./'))
     ;
 });
+
+
+gulp.task('injectjs',['myjs'], function () {
+
+  var target = gulp.src('index.html');
+
+  var sources;
+  if(isProduction) {
+    sources = gulp.src(['../dist/assets/js/prod.min.js'], {read: false});
+  } else {
+    sources = PATHS.libjs;
+    sources = sources.concat(PATHS.myjs);
+    sources = gulp.src(sources, {read: false});
+  }
+  return target
+    .pipe(inject(sources))
+    .pipe(gulp.dest('./'))
+    ;
+});
+
+gulp.task('inject',['injectjs', 'injectcss'], function(){return;});
+
+
 
 // Remove dist
 gulp.task('clean', function(){
